@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des clients{% endblock %}
+
+{% block body %}
+
+<main class="container">
+    <section class="row">
+        <div class="col-12">
+            <h1> Vos clients </h1>
+
+            {% if is_granted('ROLE_CLIENT_RESIDENTIEL') %}
+
+            <div class="mb-3">
+
+                <h2> Liste des clients d'affaires </h2>
+
+            </div>
+
+            {% for utilisateur in user %}
+
+            {% if "ROLE_CLIENT_AFFAIRE" in utilisateur.roles %}
+            <div class="col-12">
+
+                <a> - </a>
+                {{ utilisateur.nom }}
+                <a> | </a>
+                {{ utilisateur.prenom }}
+                <a> | </a>
+                {{ utilisateur.email }}
+
+            </div>
+
+            {% endif %}
+
+            {% endfor %}
+
+            {% endif %}
+
+
+            {% if is_granted('ROLE_CLIENT_AFFAIRE') %}
+
+            <div class="mb-3">
+
+                <h2> Liste des clients résidentiels </h2>
+
+            </div>
+
+            {% for utilisateur in user %}
+
+            {% if "ROLE_CLIENT_RESIDENTIEL" in utilisateur.roles %}
+            <div class="col-12">
+
+                <a> - </a>
+                {{ utilisateur.nom }}
+                <a> | </a>
+                {{ utilisateur.prenom }}
+                <a> | </a>
+                {{ utilisateur.email }}
+
+            </div>
+
+            {% endif %}
+
+            {% endfor %}
+
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+
+            <div class="mb-3">
+
+                <h2> Liste des clients résidentiels </h2>
+
+                {% for utilisateur in user %}
+
+                {% if "ROLE_CLIENT_RESIDENTIEL" in utilisateur.roles %}
+                <div class="col-12">
+
+                    <a> - </a>
+                    {{ utilisateur.nom }}
+                    <a> | </a>
+                    {{ utilisateur.prenom }}
+                    <a> | </a>
+                    {{ utilisateur.email }}
+
+                </div>
+
+                {% endif %}
+
+                {% endfor %}
+
+                <h2> Liste des clients d'affaires </h2>
+
+                {% for utilisateur in user %}
+
+                {% if "ROLE_CLIENT_AFFAIRE" in utilisateur.roles %}
+                <div class="col-12">
+
+                    <a> - </a>
+                    {{ utilisateur.nom }}
+                    <a> | </a>
+                    {{ utilisateur.prenom }}
+                    <a> | </a>
+                    {{ utilisateur.email }}
+
+                </div>
+
+                {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+            <a class="btn btn-warning " href="{{ path( 'profile_password' )}}" > Changer le mot de passe </a>
+           
+        
+
+        </div>
+    </section>
+</main>
+
+
+{% endblock %}

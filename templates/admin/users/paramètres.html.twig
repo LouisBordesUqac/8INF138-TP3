@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Paramètres {% endblock %}
+
+{% block body %}
+
+    <h1> Paramètres de sécurité </h1>
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Protection brute force</h3p>
+
+                <h5> Nombre de tentatives : </h5>
+
+                <h5> Délais d'attente : </h5>
+
+                <h5> Blocage actif : </h5>
+            </div>
+            <div class="col">
+                <h3>Changement de mot de passe automatique</h3p>
+
+                <h5> Demander à l'utilisateur de changer : </h5>
+
+                <h5> Période : </h5>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3> Politique de mot de passe </h3p>
+
+                <h5> Mot de passe complexe obligatoire : </h5>
+
+                <h5> Mot de passe long obligatoire : </h5>
+
+            </div>
+        
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
